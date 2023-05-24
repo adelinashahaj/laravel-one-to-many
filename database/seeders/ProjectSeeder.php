@@ -6,7 +6,6 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str; // <- da importare
 use Faker\Generator as Faker;
-
 class ProjectSeeder extends Seeder
 {
     /**

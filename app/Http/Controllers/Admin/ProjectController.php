@@ -5,6 +5,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Support\Str; // <- da importare
 use Illuminate\Http\Request;
 
@@ -28,7 +29,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -65,6 +67,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+
         //$project = Project::findOrFail($id);
         return view('admin.projects.show', compact('project'));
     }
@@ -77,7 +80,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -92,7 +96,7 @@ class ProjectController extends Controller
         $form_data = $request->validated();
         $form_data['slug'] = Project::generateSlug($request->title);
 
-        $checkPost = Project::where('slug', $form_data['slug'])->first();
+        $checkPost = Project::where('slug', $form_data['slug'])->where('id', '<>', $project->id)->first();
         if ($checkPost) {
             return back()->withInput()->withErrors(['slug' => 'Impossibile creare lo slug per questo post, cambia il titolo']);
         }

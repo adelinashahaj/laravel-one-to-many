@@ -22,6 +22,9 @@
                         <li>
                             <a class="nav-link" href="{{route('admin.projects.create')}}">{{ __('Crea nuovo progetto') }}</a>
                         </li>
+                        <li>
+                            <a class="nav-link" href="{{route('admin.types.index')}}">{{ __('Types') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

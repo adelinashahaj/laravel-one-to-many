@@ -13,7 +13,8 @@ class Project extends Model
         'title',
         'description',
         'cover_image',
-        'slug'
+        'slug',
+        'type_id'
 
     ];
 
@@ -21,5 +22,9 @@ class Project extends Model
     public static function generateSlug(string $title){
         return Str::slug($title, '-');
 
+    }
+
+    public function type() {
+        return $this->belongsTo(Type::class);
     }
 }

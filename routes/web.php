@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\ProfileController;
@@ -30,6 +31,10 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', ProjectController::class)->parameters([
             'projects' => 'project:slug' //https://laravel.com/docs/9.x/controllers#restful-naming-resource-route-parameters
         ]);
+
+        Route::resource('types', TypeController::class)->parameters([
+            'types' => 'type:slug'
+        ])->only(['index']);
 
 
     });

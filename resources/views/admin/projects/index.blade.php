@@ -10,6 +10,7 @@
         <th scope="col">Titolo</th>
         <th scope="col">Img</th>
         <th scope="col">Slug</th>
+        <th scope="col">Tipo</th>
         <th scope="col">Azioni</th>
       </tr>
     </thead>
@@ -20,6 +21,7 @@
                 <td>{{$project->title}}</td>
                 <td>{{$project->cover_image}}</td>
                 <td>{{$project->slug}}</td>
+                <td>{{$project->type?->name}}</td>
                 <td class="d-flex">
 
                     <a class="btn btn-primary me-2" href="{{route('admin.projects.show', ['project' => $project->slug])}}">Vedi</a>
