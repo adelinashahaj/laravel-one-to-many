@@ -19,7 +19,13 @@
                 <td>{{$type->id}}</td>
                 <td>{{$type->name}}</td>
                 <td>{{$type->slug}}</td>
-                <td>{{count($type->projects)}} @if(count($type->projects) > 0) {{dd($type->projects)}} @endif</td>
+                <td>{{count($type->projects)}} @if(count($type->projects) > 0)
+                  
+                  @foreach ($projects as $project )
+                  <h6>{{$project->name}}</h6>
+
+                  @endforeach
+                  @endif</td>
 
             </tr>
         @endforeach
